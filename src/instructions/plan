@@ -1,0 +1,60 @@
+A Guide for the Planning Stages of Your Project
+1 Identify What Each View Should Look Like
+2 Break Each View Into a Hierarchy of Components
+3 Determine What Events Happen in the App
+4 Determine What Data Lives in the Store
+
+*******   VIEWS   *******
+
+0. Sign-in [no nav]
+
+1. Home
+  1a. Home > no answer
+  1b. Home > with answers
+
+2. New question
+
+3. Leader Board
+
+
+*******   NAV   *******
+
+(logged) Home  /  New question  /  Leader Board  /  [Hello Name]  /  Log out
+(guest)  Home  /  New question  /  Leader Board  /      .         /     .
+
+
+*******   COMPS   *******
+
+App                                      /*
+
+Nav                                      /*
+
+SignIn                                   only when no authedUser
+
+QuestionForm       fill in 2 options     on /New_question
+
+UserInfo           show name, avatar,    on /Leaderboard
+                   answered and created
+                   questions, score
+
+QuestionPreview    show avatar and       on /Home/Unanswered
+                   name, question,          /Home/Answered
+                   button to pick up
+
+QuestionPoll       show results on      /Home/Unanswered/question
+                   given question
+
+Box                decorative shape
+                   showing an avarar
+                   on the left, a title
+                   and childrent on the
+                   right
+
+
+*******   EVENTS   *******
+
+Getting list of questions
+Getting list of users
+Authing a user / loggin out
+adding a new question
+answering a question
