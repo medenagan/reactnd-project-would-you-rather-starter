@@ -1,16 +1,12 @@
 body {
-  margin: 40 px;
+  margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 nav ul {
@@ -25,6 +21,9 @@ nav li:first-child {
   padding-left: 0;
 }
 
+img {
+  max-width: 100%;
+}
 
 .container {
   max-width: 800px;
@@ -33,15 +32,29 @@ nav li:first-child {
   border: 1px red solid;
 }
 
-h1, h2, form, .center {
+h1, h2, form {
   text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .box {
   border: 1px solid #0000000a;
   padding: 30px;
   background: #f5f5f5;
-  border-radius: 25px;
+  background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(242,242,242,1) 100%);
+  border-radius: 20px;
+  box-shadow: 8px 8px 10px 0px #0000009e;
 }
 
 h1.aqua, h2.aqua, h3.acqua {
@@ -50,6 +63,11 @@ h1.aqua, h2.aqua, h3.acqua {
 
 button.aqua {
   background-color: #3079d8;
+  color: white;
+}
+
+button.aqua:disabled {
+  background-color: grey;
   color: white;
 }
 
@@ -65,6 +83,7 @@ img.logo {
 }
 
 form {
+  with: 90%;
   margin-top: 30px;
   margin-bottom: 30px;
 }
@@ -75,14 +94,88 @@ form > input {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   padding: 5px;
   font-size: 20px;
   border-radius: 10px;
-  width: 90%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
   color: #3079d8;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex.horizontal {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex.vertical {
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.userinfo .name {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  align-self: center;
+}
+
+.userinfo img.avatar {
+  width: 75px;
+  border-radius: 20%;
+}
+
+.userinfo .score {
+  background-color: #3079d8; /* aqua */
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.userinfo .questions {
+  width: 250px;
+}
+
+.leaderboard li + li {
+  margin-top: 10px;
+}
+
+@media (max-width: 350px) {
+  body {
+    font-size: 15px;
+  }
+
+  .box {
+    padding: 0;
+  }
+
+  .userinfo .score {
+    background-color: inherit;
+    color: #3079d8; /* aqua */;
+    border-radius: inherit;
+    height: inherit;
+    width: inherit;
+    line-height: inherit;
+  }
+
+  .userinfo .questions {
+    width: inherit;
+  }
 }

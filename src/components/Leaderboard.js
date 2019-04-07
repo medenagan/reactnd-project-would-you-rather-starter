@@ -1,5 +1,32 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { usersToArray, setUserStats } from "../utils/helper";
+import UserInfo from "./UserInfo";
 
-export default function NewQuestion(props) {
-  return <div className="center">This is the Leaderboard</div>
+class NewQuestion extends Component {
+
+  render() {
+    const { userArray } = this.props;
+    return <div  className="leaderboard">
+      <ul>
+        {
+          userArray.map(user => (
+            <li key={user.id}>
+              <UserInfo user={user} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  }
 }
+
+const mapStateToProps = ({users}) => {
+	return {
+		userArray: usersToArray(users)
+      .map(user => setUserStats(user))
+      .sort((a, b) => b.countAll - a.countAll)
+	};
+};
+
+export default connect(mapStateToProps)(NewQuestion);

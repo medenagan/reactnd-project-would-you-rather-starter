@@ -6,21 +6,31 @@ import Activity from "./Activity";
 import NewQuestion from "./NewQuestion";
 import Leaderboard from "./Leaderboard";
 import P404 from "./P404";
-import Signin from "./Signin";
-import Signup from "./Signup";
+import Signin from "./SignIn";
+import Signup from "./SignUp";
 import Logout from "./Logout";
 
-// Home  /  New question  /  Leader Board  /  [Hello Name]  /  Log out
+import loadInitialDataRequest from "../actions/init";
+import { connect } from "react-redux";
+import LoadingBar from "react-redux-loading";
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(loadInitialDataRequest());
+  }
+
 	render() {
+    const { authedUser, users } = this.props;
+
 		return (<div className="App">
+    <LoadingBar/>
     <div className="container">
       <BrowserRouter>
-        <Nav/>
+        <Nav authedUser={authedUser} users={users}/>
         <Switch>
           <Route path="/" exact component={Activity}/>
-          <Route path="/new_question" exact component={NewQuestion}/>
+          <Route path="/add" exact component={NewQuestion}/>
           <Route path="/leaderboard" exact component={Leaderboard}/>
           <Route path="/signin" exact component={Signin}/>
           <Route path="/signup" exact component={Signup}/>
@@ -33,8 +43,12 @@ class App extends Component {
 	}
 }
 
-export default App;
+const mapStateToProps = ({authedUser, users}) => {
+	return {
+    authedUser,
+    users,
+		loading: !authedUser
+	};
+};
 
-
-//(logged) Home  /  New question  /  Leader Board  /  [Hello Name]  /  Log out
-//(guest)  Home  /  New question  /  Leader Board  /      .         /     .
+export default connect(mapStateToProps)(App);

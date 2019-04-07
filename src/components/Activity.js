@@ -1,7 +1,6 @@
-import React, { component } from "react";
+import React, { Component } from "react";
 
-class Activity extends React.Component {
-
+class Activity extends Component {
   render() {
     return <div className="center">This is the activity</div>;
   }
