@@ -40,12 +40,11 @@ class NewQuestion extends Component {
       optionOneText.trim().toLowerCase() === optionTwoText.trim().toLowerCase();
 
     return <div>
-      <div className="center">This is a new question</div>
       <div className="box">
         <form onSubmit={this.handleSubmit}>
           <h1>New Question</h1>
           <div className="left">Complete the Question:</div>
-          <h2>Would you rather...</h2>
+          <h2 className="aqua">Would you rather...</h2>
           <input
             value={optionOneText}
             name="optionOneText"

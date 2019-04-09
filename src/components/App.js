@@ -9,15 +9,16 @@ import P404 from "./P404";
 import Signin from "./SignIn";
 import Signup from "./SignUp";
 import Logout from "./Logout";
+import QuestionView from "./QuestionView";
 
-import loadInitialDataRequest from "../actions/init";
+import requestInitialData from "../actions/init";
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading";
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(loadInitialDataRequest());
+    this.props.dispatch(requestInitialData());
   }
 
 	render() {
@@ -28,15 +29,28 @@ class App extends Component {
     <div className="container">
       <BrowserRouter>
         <Nav authedUser={authedUser} users={users}/>
-        <Switch>
-          <Route path="/" exact component={Activity}/>
-          <Route path="/add" exact component={NewQuestion}/>
-          <Route path="/leaderboard" exact component={Leaderboard}/>
-          <Route path="/signin" exact component={Signin}/>
-          <Route path="/signup" exact component={Signup}/>
-          <Route path="/logout" exact component={Logout}/>
-          <Route component={P404}/>
-        </Switch>
+        {
+          (authedUser)
+            ? (
+              <Switch>
+                <Route path="/" exact component={Activity}/>
+                <Route path="/add" exact component={NewQuestion}/>
+                <Route path="/leaderboard" exact component={Leaderboard}/>
+                <Route path="/signin" exact component={Signin}/>
+                <Route path="/signup" exact component={Signup}/>
+                <Route path="/logout" exact component={Logout}/>
+                <Route path="/questions/:id" component={QuestionView}/>
+                <Route component={P404}/>
+              </Switch>
+            )
+            : (
+            <Switch>
+              <Route path="/signin" exact component={Signin}/>
+              <Route path="/signup" exact component={Signup}/>
+              <Route component={Signin}/>
+            </Switch>
+            )
+        }
       </BrowserRouter>
     </div>
 		</div>);

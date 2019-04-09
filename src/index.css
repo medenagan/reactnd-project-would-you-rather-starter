@@ -9,12 +9,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+ul {
+  list-style: none;
+  text-decoration: none;
+}
+
 nav ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  text-decoration: none;
-  list-style: none;
 }
 
 nav li:first-child {
@@ -48,6 +51,14 @@ h1, h2, form {
   font-weight: bold;
 }
 
+.big {
+  font-size: 30px;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
 .box {
   border: 1px solid #0000000a;
   padding: 30px;
@@ -57,8 +68,23 @@ h1, h2, form {
   box-shadow: 8px 8px 10px 0px #0000009e;
 }
 
-h1.aqua, h2.aqua, h3.acqua {
+.title {
+  font-size: 34px;
+  font-weight: bold;
+}
+
+.aqua {
   color: #3079d8;
+}
+
+button {
+  padding-top:10px;
+  padding-bottom:10px;
+  border-radius: 7px;
+}
+
+button:enabled {
+  cursor: grab;
 }
 
 button.aqua {
@@ -66,9 +92,20 @@ button.aqua {
   color: white;
 }
 
+button.aqua:hover:enabled {
+  background-color: ##3781e0; /* aqualight */
+  background: radial-gradient(circle, #3781e0 0%, #3079d8 100%);
+}
+
 button.aqua:disabled {
   background-color: grey;
   color: white;
+}
+
+button.flatdisabled:disabled {
+  background-color: white;
+  color: black;
+  border: none;
 }
 
 button, select, h3 {
@@ -122,23 +159,37 @@ a {
   justify-content: space-around;
 }
 
+.flex.vertical.center {
+  align-items: center;
+}
+
+.center.self {
+  align-self: center;
+}
+
+.flex > .ninety {
+  flex: 0.9;
+}
+
+.flex > .one {
+  flex: 1;
+}
+
 .border {
   border: 1px solid black;
 }
 
-.userinfo .name {
-  font-size: 38px;
-  font-weight: bold;
+.photobox .title {
   margin-bottom: 12px;
   align-self: center;
 }
 
-.userinfo img.avatar {
+img.avatar {
   width: 75px;
   border-radius: 20%;
 }
 
-.userinfo .score {
+.photobox .score {
   background-color: #3079d8; /* aqua */
   color: white;
   font-weight: bold;
@@ -149,12 +200,32 @@ a {
   text-align: center;
 }
 
-.userinfo .questions {
+.photobox .questions {
   width: 250px;
 }
 
-.leaderboard li + li {
-  margin-top: 10px;
+li + li > .photobox  {
+  margin-top: 15px;
+}
+
+.progress,
+.progress > * {
+  margin: 0;
+  padding: 0;
+  background: #9c9b9b; /*darker grey*/
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  line-height: 33px;
+}
+
+.progress > * {
+  background: #3079d8;
+}
+
+.optionstats {
+  min-height: 100px;
+  margin: 15px 0px;
 }
 
 @media (max-width: 350px) {
@@ -166,7 +237,7 @@ a {
     padding: 0;
   }
 
-  .userinfo .score {
+  .photobox .score {
     background-color: inherit;
     color: #3079d8; /* aqua */;
     border-radius: inherit;
@@ -175,7 +246,7 @@ a {
     line-height: inherit;
   }
 
-  .userinfo .questions {
+  .photobox .questions {
     width: inherit;
   }
 }

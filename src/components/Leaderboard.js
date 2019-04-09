@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { usersToArray, setUserStats } from "../utils/helper";
+import { collectionToArray, setUserStats } from "../utils/helper";
 import UserInfo from "./UserInfo";
 
 class NewQuestion extends Component {
@@ -23,7 +23,7 @@ class NewQuestion extends Component {
 
 const mapStateToProps = ({users}) => {
 	return {
-		userArray: usersToArray(users)
+		userArray: collectionToArray(users)
       .map(user => setUserStats(user))
       .sort((a, b) => b.countAll - a.countAll)
 	};
