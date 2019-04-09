@@ -24,5 +24,5 @@ export function saveQuestionAnswer ({ authedUser, qid, answer }) {
 }
 
 export function logout() {
-  return (new Promise(resolve => setTimeout( () => resolve(true), 2500)));
+  return (new Promise(resolve => setTimeout( () => resolve(true), 800)));
 }

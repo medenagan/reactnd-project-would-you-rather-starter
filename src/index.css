@@ -175,6 +175,14 @@ a {
   flex: 1;
 }
 
+.flex.end {
+  align-items: flex-end;
+}
+
+flex.start {
+  justify-content: flex-start;
+}
+
 .border {
   border: 1px solid black;
 }
@@ -206,6 +214,10 @@ img.avatar {
 
 li + li > .photobox  {
   margin-top: 15px;
+}
+
+label > input[type="radio"] {
+  margin-right: 10px;
 }
 
 .progress,

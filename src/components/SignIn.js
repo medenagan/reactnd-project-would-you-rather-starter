@@ -34,9 +34,9 @@ class Signin extends Component {
     return (
       <SignBox head="Welcome Back!" subhead="Please log in to resume your game">
         <form onSubmit={this.handleSubmit}>
-            <h3>Sign In</h3>
+            <h3>Log In</h3>
             <select value={chosenId} onChange={this.handleChange}>
-              <option value="">Please select your userid</option>
+              <option value="">Please select your name</option>
               {
                 Object.keys(users).map(id => <option key={id} value={id}>{users[id].name}</option>)
               }

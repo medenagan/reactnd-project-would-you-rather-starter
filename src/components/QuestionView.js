@@ -4,6 +4,7 @@ import { setQuestionAuthedRelation } from "../utils/helper";
 import { Link } from "react-router-dom";
 
 import Poll from "./Poll";
+import QuestionAnswering from "./QuestionAnswering";
 
 class QuestionView extends Component {
 
@@ -27,7 +28,7 @@ class QuestionView extends Component {
     }
 
     else {
-      return <div>Here you will select options and vote</div>
+      return <QuestionAnswering questionDetails={questionDetails} />
     }
 
   }

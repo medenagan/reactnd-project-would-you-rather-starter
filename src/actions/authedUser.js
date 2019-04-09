@@ -15,7 +15,9 @@ export function requestLogout() {
   return (dispatch) => {
     dispatch(showLoading());
     logout()
-    .then(() => dispatch(setAuthedUserSuccess(null)))
-    .finally( () => hideLoading())
+    .then(() => {
+      dispatch(setAuthedUserSuccess(null))
+      dispatch(hideLoading());
+    })
   };
 }
