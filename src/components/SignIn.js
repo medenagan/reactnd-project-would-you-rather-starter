@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import SignBox from "./SignBox";
 
 import { connect } from "react-redux";
-import { setAuthedUserSuccess } from "../actions/authedUser";
+import { requestLogin } from "../actions/authedUser";
 
 class Signin extends Component {
 
@@ -19,17 +19,20 @@ class Signin extends Component {
     e.preventDefault();
 
     const { chosenId } = this.state;
-    const { users, dispatch, history } = this.props;
+    const { users, dispatch } = this.props;
 
     if (chosenId && users[chosenId]) {
-      dispatch(setAuthedUserSuccess(chosenId));
-      history.push("/");
+      dispatch(requestLogin(chosenId));
     }
   }
 
   render() {
-    const { users } = this.props;
+    const { authedUser, users } = this.props;
     const { chosenId } = this.state;
+
+    if (authedUser) {
+      return <Redirect to="/" />
+    }
 
     return (
       <SignBox head="Welcome Back!" subhead="Please log in to resume your game">
@@ -49,9 +52,10 @@ class Signin extends Component {
   }
 }
 
-const mapStateToProps = ({users}) => {
+const mapStateToProps = ({ users, authedUser }) => {
 	return {
-		users
+		users,
+    authedUser
 	};
 };
 

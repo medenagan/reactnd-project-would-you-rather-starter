@@ -33,7 +33,7 @@ SignIn                                   only when no authedUser
 
 QuestionForm       fill in 2 options     on /add
 
-UserInfo           show name, avatar,    on /Leaderboard
+UserInfo           show name, avatar,    on /leaderboard
                    answered and created
                    questions, score
 

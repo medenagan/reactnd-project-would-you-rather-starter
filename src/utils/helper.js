@@ -11,5 +11,5 @@ export const setQuestionAuthedRelation = ({question, authedUser, users}) => {
   const hasAsked = question.author === authedUser;
   const hasAnswered = !!users[authedUser].answers[question.id];
   const userAuthor = users[question.author];
-  return Object.assign({}, question, {hasAsked, hasAnswered, userAuthor});
+  return Object.assign({}, question, {hasAsked, hasAnswered, userAuthor, authedId: authedUser});
 }

@@ -4,7 +4,7 @@ import PhotoBox from "./PhotoBox";
 
 export default function Poll(props) {
 
-  const {optionOne, optionTwo, userAuthor, hasAsked} = props.questionDetails;
+  const {optionOne, optionTwo, userAuthor, hasAsked, authedId} = props.questionDetails;
   const votesCount = optionOne.votes.length + optionTwo.votes.length;
 
   return <PhotoBox
@@ -19,7 +19,16 @@ export default function Poll(props) {
       [optionOne, optionTwo].map(option => {
         const percentage = Math.round(option.votes.length / votesCount * 100);
         return <div key={option.text} className="optionstats box flex vertical">
-          <div className="bold">{option.text}</div>
+          <div className="flex horizontal">
+            <div className="bold">{option.text}</div>
+            <div
+              className="yourvote"
+              title="Your vote!"
+              style={{visibility: option.votes.includes(authedId) ? "visible" : "hidden"}}
+            >
+              <span>YOURS</span>
+            </div>
+          </div>
           <div className="progress">
             <div style={{width: `${percentage}%`}}>
               {
@@ -27,7 +36,7 @@ export default function Poll(props) {
               }
             </div>
           </div>
-          <div className="center self">{`${option.votes.length} voted of ${votesCount}`}</div>
+          <div className="center self">{`${option.votes.length} votes of ${votesCount}`}</div>
         </div>
       })
     }

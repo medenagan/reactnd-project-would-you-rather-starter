@@ -53,7 +53,6 @@ export function saveQuestionAnswerFailure(error) {
 };
 
 export function requestSaveQuestionAnswer({authedUser, qid, answer}) {
-  console.log({authedUser, qid, answer})
   return (dispatch) => {
     dispatch(showLoading());
     saveQuestionAnswer({authedUser, qid, answer})

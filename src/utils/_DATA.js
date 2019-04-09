@@ -200,3 +200,28 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     }, 500)
   })
 }
+
+
+// Add new user
+export function _saveUser ({ userid, name, avatar }) {
+  return new Promise((res, rej) => {
+    setTimeout(() => {
+      if (users[userid]) {
+        rej(`${userid} already exists`)
+      }
+      else {
+        users = {
+          ...users,
+          [userid]: {
+            id: userid,
+            name: name,
+            avatarURL: avatar,
+            answers: {},
+            questions: []
+          }
+        };
+        res(Object.assign({}, users[userid]));
+      }
+    }, 500)
+  })
+}

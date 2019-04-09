@@ -10,7 +10,7 @@ class Logout extends Component {
   }
 
   render() {
-    const {authedUser} = this.props;
+    const { authedUser } = this.props;
 
     return (authedUser)
       ? <div className="center">You are being logged out...</div>

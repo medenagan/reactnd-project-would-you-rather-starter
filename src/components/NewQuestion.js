@@ -61,6 +61,7 @@ class NewQuestion extends Component {
               placeholder="Enter Option #2 Here"
             />
           <button
+            className="aqua"
             type="submit"
             disabled={illegalValues}>Submit</button>
         </form>

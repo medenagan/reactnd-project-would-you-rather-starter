@@ -1,5 +1,5 @@
-import {RECEIVE_USERS_SUCCESS} from "../actions/users";
-import {SAVE_QUESTION_SUCCESS, SAVE_QUESTION_ANSWER_SUCCESS} from "../actions/questions";
+import { RECEIVE_USERS_SUCCESS, ADD_USER_SUCCESS } from "../actions/users";
+import { SAVE_QUESTION_SUCCESS, SAVE_QUESTION_ANSWER_SUCCESS } from "../actions/questions";
 
 export default function users(users = {}, action) {
   switch (action.type) {
@@ -20,7 +20,7 @@ export default function users(users = {}, action) {
             action.question.id
           ]
         }
-      }
+      };
 
     case SAVE_QUESTION_ANSWER_SUCCESS:
       return {
@@ -32,7 +32,13 @@ export default function users(users = {}, action) {
             [action.qid]: action.answer
           }
         }
-      }
+      };
+
+    case ADD_USER_SUCCESS:
+      return {
+        ...users,
+        [action.user.id]: action.user
+      };
 
     default:
       return users;

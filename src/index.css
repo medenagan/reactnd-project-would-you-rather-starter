@@ -29,10 +29,13 @@ img {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   padding: 15px;
   margin: 0 auto;
-  border: 1px red solid;
+}
+
+h1, h2, h3 {
+  margin: 12px 0;
 }
 
 h1, h2, form {
@@ -121,8 +124,8 @@ img.logo {
 
 form {
   with: 90%;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 form > button,
@@ -238,6 +241,20 @@ label > input[type="radio"] {
 .optionstats {
   min-height: 100px;
   margin: 15px 0px;
+}
+
+.yourvote{
+  background: #f9f053;
+  color: #3079d8;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 9px;
+  border: 1px solid #e6de4e;
 }
 
 @media (max-width: 350px) {

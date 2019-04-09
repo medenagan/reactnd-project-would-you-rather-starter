@@ -36,7 +36,6 @@ class App extends Component {
                 <Route path="/" exact component={Activity}/>
                 <Route path="/add" exact component={NewQuestion}/>
                 <Route path="/leaderboard" exact component={Leaderboard}/>
-                <Route path="/signin" exact component={Signin}/>
                 <Route path="/signup" exact component={Signup}/>
                 <Route path="/logout" exact component={Logout}/>
                 <Route path="/questions/:id" component={QuestionView}/>
@@ -45,8 +44,8 @@ class App extends Component {
             )
             : (
             <Switch>
-              <Route path="/signin" exact component={Signin}/>
               <Route path="/signup" exact component={Signup}/>
+              <Route path="/logout" exact component={Logout}/>
               <Route component={Signin}/>
             </Switch>
             )

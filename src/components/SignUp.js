@@ -4,7 +4,9 @@ import Avatar from "./Avatar";
 import { avatars } from "../utils/images";
 
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
+
+import { requestSignup } from "../actions/authedUser";
 
 class Signup extends Component {
 
@@ -26,19 +28,29 @@ class Signup extends Component {
     });
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { userid, name, avatar } = this.state;
+    const { dispatch } = this.props;
+
+    dispatch(requestSignup({ userid, name, avatar }));
+  }
 
   render() {
     const { userid, name, avatar } = this.state;
-    const { users } = this.props;
+    const { users, authedUser } = this.props;
+
+    if (authedUser) {
+      return <Redirect to="/" />
+    }
 
     const existingUser = !!users[userid];
     const isLegit = !existingUser && userid && name.trim() && avatar;
 
-    console.log(userid, users)
-
     return (
       <SignBox head="Welcome to the Would You Rather game!" subhead="Please sign up to get started">
-        <form>
+        <form onSubmit={this.handleSubmit}>
             <h3>Sign Up</h3>
             <input type="text"
               placeholder="Your nickname"
@@ -76,7 +88,7 @@ class Signup extends Component {
                   <div className="center">Sorry, this username already exists.</div>
                   <div>
                     <span>It's you? Please </span>
-                    <NavLink to="/signin">log in</NavLink>
+                    <NavLink to="/">log in</NavLink>
                     <span> and resume your game!</span>
                   </div>
                 </div>
@@ -90,9 +102,10 @@ class Signup extends Component {
   }
 }
 
-const mapStateToProps = ({users}) => {
+const mapStateToProps = ({ users, authedUser }) => {
 	return {
-		users
+    users,
+    authedUser
 	};
 };
 
