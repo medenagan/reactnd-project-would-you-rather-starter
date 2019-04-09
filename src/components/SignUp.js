@@ -34,6 +34,8 @@ class Signup extends Component {
     const { userid, name, avatar } = this.state;
     const { dispatch } = this.props;
 
+    this.setState({userid: "", name: "", avatar: ""});
+
     dispatch(requestSignup({ userid, name, avatar }));
   }
 
